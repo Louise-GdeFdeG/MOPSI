@@ -1,4 +1,4 @@
-""" Initialisation of the training sets.
+""" Initialization of the training sets.
 """
 import numpy as np
 import pickle as pkl
@@ -59,11 +59,11 @@ training_set_g, validation_set_g, test_set_g = (
 )
 
 # We save the sets
-dico_f = {"train": training_set_f, "valid": validation_set_f, "test": test_set_f}
-dico_g = {"train": training_set_g, "valid": validation_set_g, "test": test_set_g}
+dictionary_f = {"train": training_set_f, "valid": validation_set_f, "test": test_set_f}
+dictionary_g = {"train": training_set_g, "valid": validation_set_g, "test": test_set_g}
 
 with open("/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/data_f.pkl", "wb") as f:
-    pkl.dump(dico_f, f)
+    pkl.dump(dictionary_f, f)
 
 with open("/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/data_g.pkl", "wb") as f:
-    pkl.dump(dico_g, f)
+    pkl.dump(dictionary_g, f)

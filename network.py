@@ -6,7 +6,7 @@ import torch.nn.functional as F
 
 
 class Net(nn.Module):
-    """ The class that defines our modele. It's a subclass
+    """ The class that defines our model. It's a subclass
     of the class Module from torch.nn.
     """
 
