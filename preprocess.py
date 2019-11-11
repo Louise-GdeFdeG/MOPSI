@@ -21,12 +21,12 @@ def f(x: float):
 
 
 def g(x: float):
-    """ The piecewise continuous function that will be used to check 
+    """ The piecewise continuous function that will be used to check
     the quality of the approximation.
-    
+
     Arguments:
         x {float} -- Will be taken in [0, 1]
-    
+
     Returns:
         int -- the digit of the first decimal of x.
     """
@@ -43,7 +43,8 @@ np.random.shuffle(data_f)
 np.random.shuffle(data_g)
 
 
-# Spliting of the sets : 80% used for training, 10% for validaion and 10% for testing
+# Spliting of the sets : 80% used for training, 10% for validation
+# and 10% for testing
 index_80pc = int(len(list_abscissa) * 0.8)
 index_90pc = int(len(list_abscissa) * 0.9)
 training_set_f, validation_set_f, test_set_f = (
@@ -62,8 +63,8 @@ training_set_g, validation_set_g, test_set_g = (
 dictionary_f = {"train": training_set_f, "valid": validation_set_f, "test": test_set_f}
 dictionary_g = {"train": training_set_g, "valid": validation_set_g, "test": test_set_g}
 
-with open("/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/data_f.pkl", "wb") as f:
+with open("data_f.pkl", "wb") as f:
     pkl.dump(dictionary_f, f)
 
-with open("/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/data_g.pkl", "wb") as f:
+with open("data_g.pkl", "wb") as f:
     pkl.dump(dictionary_g, f)
