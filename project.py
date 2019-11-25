@@ -12,14 +12,14 @@ W = 3
 # Depth of the nn (number of layer)
 L = 3
 # The maximum gap we want between the target value and the value given by the model
-learning_rate = 0.001
+learning_rate = 0.01
 
 # network creation
 net = Net(W)
 # Criterion used to measure the error of our model :
 # Mean Square Error
 criterion = nn.MSELoss()
-# The optimizer here is Adam (classic)
+# The optimizer here is Adam (classic) (eventually to change, after the other tests - gradient descent)
 optim = torch.optim.Adam(net.parameters(), learning_rate)
 
 # Get the data we saved
