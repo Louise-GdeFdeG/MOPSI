@@ -1,17 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov 12 13:23:53 2019
-
-@author: viniv
-"""
-
-""" Initialization of the training sets.
+""" Initialization of the training sets ot the piecewise continuous function.
 """
 import numpy as np
 import pickle as pkl
 
 # Number of points on which the value of the function is known.
 N = 2000
+
 
 def g(x: float):
     """ The piecewise continuous function that will be used to check
@@ -24,6 +18,7 @@ def g(x: float):
         int -- the digit of the first decimal of x.
     """
     return int(x * 10)
+
 
 # Creation of the training sets
 list_abscissa = np.linspace(0, 1, N)
@@ -42,4 +37,4 @@ training_set_g, validation_set_g, test_set_g = (
 # We save the sets
 dictionary_g = {"train": training_set_g, "valid": validation_set_g, "test": test_set_g}
 with open("data_g.pkl", "wb") as f:
-    pkl.dump(dictionary_g, file)
+    pkl.dump(dictionary_g, f)

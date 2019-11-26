@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-
-
-""" Initialization of the training sets.
+""" Initialization of the training sets of the polynomial function.
 """
 import numpy as np
 import pickle as pkl

@@ -1,12 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov 12 13:23:53 2019
-
-@author: viniv
+""" Initialization of the training sets for the constant function.
 """
 
-""" Initialization of the training sets.
-"""
 import numpy as np
 import pickle as pkl
 
@@ -15,7 +9,15 @@ N = 2000
 
 
 def h(x: float):
-    return(1)
+    """ Constant function equal to 1.
+    
+    Arguments:
+        x {float}
+    
+    Returns:
+        float -- 1
+    """
+    return 1.0
 
 
 # Creation of the training sets
@@ -34,5 +36,5 @@ training_set_h, validation_set_h, test_set_h = (
 )
 # We save the sets
 dictionnary_h = {"train": training_set_h, "valid": validation_set_h, "test": test_set_h}
-with open("data_h.pkl", "wb") as file:
-    pkl.dump(dictionnary_h, file)
+with open("data_h.pkl", "wb") as f:
+    pkl.dump(dictionnary_h, f)
