@@ -19,18 +19,7 @@ NB_EPOCH = 10
 # The maximum gap we want between the target value and the value given
 # by the model
 # learning_rate = 0.001
-learning_rate = 0.01
-
-
-# Criterion used to measure the error of our model :
-# Mean Square Error
-criterion = nn.MSELoss()
-
-# network creation
-net = Net(W)
-
-# The optimizer here is Adam (classic) (eventually to change, after the other tests - gradient descent)
-optim = torch.optim.Adam(net.parameters(), learning_rate)
+learning_rate = 0.0001
 
 
 def training(N: int, function: str):
@@ -40,6 +29,16 @@ def training(N: int, function: str):
         N {int} -- The number of known points of the function.
         function {str} -- The function identification.
     """
+    # Criterion used to measure the error of our model :
+    # Mean Square Error
+    criterion = nn.MSELoss()
+
+    # network creation
+    net = Net(W)
+
+    # The optimizer here is Adam (classic) (eventually to change, after the other tests - gradient descent)
+    optim = torch.optim.Adam(net.parameters(), learning_rate)
+
     # Get the data we saved
     data_file = "data_" + function + "_" + str(N) + ".pkl"
     path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/preprocessing/"
@@ -50,7 +49,6 @@ def training(N: int, function: str):
     validation_set = data["valid"]
     test_set = data["test"]
 
-    # training
     network_file = (
         "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/trained_network/trained_nn_"
         + function
@@ -61,6 +59,7 @@ def training(N: int, function: str):
     loss_train = []
     loss_valid = []
     for epoch in range(NB_EPOCH):
+        sum_loss_training = 0
         for i in tqdm(
             range(len(training_set)), desc="Training for epoch " + str(epoch)
         ):
@@ -76,9 +75,10 @@ def training(N: int, function: str):
             loss = criterion(output, target_tensor)
             loss.backward()
             optim.step()
-        loss_train.append(loss.item())
-        print(loss.item())
-        mean_loss_validation = 0
+            sum_loss_training += loss.item()
+        loss_train.append(sum_loss_training)
+        print(sum_loss_training)
+        sum_loss_validation = 0
         for i in tqdm(
             range(len(validation_set)), desc="Validation for epoch " + str(epoch)
         ):
@@ -92,9 +92,9 @@ def training(N: int, function: str):
             optim.zero_grad()
             output = net(x_tensor)
             loss = criterion(output, target_tensor)
-            mean_loss_validation += loss.item()
-        loss_valid.append(mean_loss_validation / len(validation_set))
-        print(mean_loss_validation / len(validation_set))
+            sum_loss_validation += loss.item()
+        loss_valid.append(sum_loss_validation)
+        print(sum_loss_validation)
         np.random.shuffle(validation_set)
         np.random.shuffle(training_set)
         # we save the training after each epoch
@@ -104,14 +104,14 @@ def training(N: int, function: str):
     plt.plot(
         [i + 1 for i in range(NB_EPOCH)],
         loss_train,
-        label="loss for training",
-        color="green",
+        "g^",
+        label="Sum of loss for training",
     )
     plt.plot(
         [i + 1 for i in range(NB_EPOCH)],
         loss_valid,
-        label="loss for validation",
-        color="red",
+        "r--",
+        label="Sum of loss for validation",
     )
     plt.xlabel("Number of epochs", fontsize=18)
     plt.ylabel("Loss", fontsize=16)
