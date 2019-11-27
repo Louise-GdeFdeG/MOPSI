@@ -37,7 +37,7 @@ def training(N: int, function: str):
     net = Net(W)
 
     # The optimizer here is Adam (classic) (eventually to change, after the other tests - gradient descent)
-    optim = torch.optim.Adam(net.parameters(), learning_rate)
+    optim = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
     # Get the data we saved
     data_file = "data_" + function + "_" + str(N) + ".pkl"
@@ -104,7 +104,7 @@ def training(N: int, function: str):
     plt.plot(
         [i + 1 for i in range(NB_EPOCH)],
         loss_train,
-        "g^",
+        "g--",
         label="Sum of loss for training",
     )
     plt.plot(
