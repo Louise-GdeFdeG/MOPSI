@@ -9,6 +9,14 @@ import numpy as np
 # Width of the nn
 W = 3
 
+# network_file = (
+#     "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/trained_network/trained_nn_"
+#     + function
+#     + "_"
+#     + str(N)
+#     + ".pt"
+# )
+
 # We load the training we done on the net.
 net = Net(W)
 net.load_state_dict(
