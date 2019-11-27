@@ -61,6 +61,7 @@ def training(N: int, function: str):
     loss_valid = []
     for epoch in range(NB_EPOCH):
         for i in range(len(training_set)):
+            # Training
             # x and target must be tensors
             x, target = training_set[i][0], training_set[i][1]
             x_tensor, target_tensor = (
@@ -73,7 +74,9 @@ def training(N: int, function: str):
             loss.backward()
             optim.step()
         loss_train.append(loss)
+        mean_loss_validation = 0
         for i in range(len(validation_set)):
+            # Validation
             # x and target must be tensors
             x, target = validation_set[i][0], validation_set[i][1]
             x_tensor, target_tensor = (
@@ -83,13 +86,26 @@ def training(N: int, function: str):
             optim.zero_grad()
             output = net(x_tensor)
             loss = criterion(output, target_tensor)
+            mean_loss_validation += loss
+        loss_valid.append(mean_loss_validation / len(validation_set))
         np.random.shuffle(validation_set)
-        loss_valid.append(loss)
+        np.random.shuffle(training_set)
         # we save the training after each epoch
         torch.save(net.state_dict(), network_file)
         # np.random.shuffle(training_set_h) #?
     plt.clf()
-    plt.plot([i + 1 for i in range(NB_EPOCH)], loss_value, label="loss", color="green")
+    plt.plot(
+        [i + 1 for i in range(NB_EPOCH)],
+        loss_train,
+        label="loss for training",
+        color="green",
+    )
+    plt.plot(
+        [i + 1 for i in range(NB_EPOCH)],
+        mean_loss_validation,
+        label="loss for validation",
+        color="red",
+    )
     plt.xlabel("Number of epochs", fontsize=18)
     plt.ylabel("Loss", fontsize=16)
     plt.title("Loss value depending on the number of epochs done", fontsize=20)
