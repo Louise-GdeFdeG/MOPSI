@@ -1,6 +1,6 @@
 """ Initialization of the training sets of the polynomial function.
 """
-from preprocess import np, pkl, create_data
+from preprocessing.preprocess import np, pkl, create_data
 
 # Number of points on which the value of the function is known.
 N = 2000
