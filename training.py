@@ -57,7 +57,8 @@ def training(N: int, function: str):
         + str(N)
         + ".pt"
     )
-    loss_value = []
+    loss_train = []
+    loss_valid = []
     for epoch in range(NB_EPOCH):
         for i in range(len(training_set)):
             # x and target must be tensors
@@ -71,7 +72,19 @@ def training(N: int, function: str):
             loss = criterion(output, target_tensor)
             loss.backward()
             optim.step()
-        loss_value.append(loss)
+        loss_train.append(loss)
+        for i in range(len(validation_set)):
+            # x and target must be tensors
+            x, target = validation_set[i][0], validation_set[i][1]
+            x_tensor, target_tensor = (
+                torch.FloatTensor([x]),
+                torch.FloatTensor([target]),
+            )
+            optim.zero_grad()
+            output = net(x_tensor)
+            loss = criterion(output, target_tensor)
+        np.random.shuffle(validation_set)
+        loss_valid.append(loss)
         # we save the training after each epoch
         torch.save(net.state_dict(), network_file)
         # np.random.shuffle(training_set_h) #?
