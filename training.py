@@ -2,6 +2,7 @@
 
 from network import Net, nn, torch
 from preprocessing.preprocess import pkl, np
+from tqdm import tqdm
 import math
 import matplotlib.pyplot as plt
 
@@ -60,7 +61,9 @@ def training(N: int, function: str):
     loss_train = []
     loss_valid = []
     for epoch in range(NB_EPOCH):
-        for i in range(len(training_set)):
+        for i in tqdm(
+            range(len(training_set)), desc="Training for epoch " + str(epoch)
+        ):
             # Training
             # x and target must be tensors
             x, target = training_set[i][0], training_set[i][1]
@@ -73,9 +76,12 @@ def training(N: int, function: str):
             loss = criterion(output, target_tensor)
             loss.backward()
             optim.step()
-        loss_train.append(loss)
+        loss_train.append(loss.item())
+        print(loss.item())
         mean_loss_validation = 0
-        for i in range(len(validation_set)):
+        for i in tqdm(
+            range(len(validation_set)), desc="Validation for epoch " + str(epoch)
+        ):
             # Validation
             # x and target must be tensors
             x, target = validation_set[i][0], validation_set[i][1]
@@ -86,8 +92,9 @@ def training(N: int, function: str):
             optim.zero_grad()
             output = net(x_tensor)
             loss = criterion(output, target_tensor)
-            mean_loss_validation += loss
+            mean_loss_validation += loss.item()
         loss_valid.append(mean_loss_validation / len(validation_set))
+        print(mean_loss_validation / len(validation_set))
         np.random.shuffle(validation_set)
         np.random.shuffle(training_set)
         # we save the training after each epoch
@@ -102,14 +109,13 @@ def training(N: int, function: str):
     )
     plt.plot(
         [i + 1 for i in range(NB_EPOCH)],
-        mean_loss_validation,
+        loss_valid,
         label="loss for validation",
         color="red",
     )
     plt.xlabel("Number of epochs", fontsize=18)
     plt.ylabel("Loss", fontsize=16)
     plt.title("Loss value depending on the number of epochs done", fontsize=20)
-    """plt. axis([0,50,0,10]) """  # absicces de 0 à 50, ordonnées de 0 à 10
     plt.grid()
     plt.legend(loc="best")
     plt.show()
