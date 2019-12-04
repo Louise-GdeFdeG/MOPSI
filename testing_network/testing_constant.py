@@ -5,7 +5,7 @@ import sys
 # insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI")
 from testing import testing
+from constant import *
 
-N = 2000
 
-testing(N, "constant")
+testing(W, L, N, NB_EPOCH, learning_rate, id_function)

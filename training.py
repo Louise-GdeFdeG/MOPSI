@@ -9,11 +9,7 @@ import matplotlib.pyplot as plt
 
 def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     """ Function used to train our network.
-    
-    Arguments:
-        N {int} -- The number of known points of the function.
-        function {str} -- The function identification.
-    
+
     Arguments:
         W {int} -- The width of our nn.
         L {int} -- The depth of our nn.
@@ -100,7 +96,7 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         np.random.shuffle(validation_set)
         np.random.shuffle(training_set)
         # we save the training after each epoch only if the validation loss has decreased
-        if epoch > 0 and loss_valid[epoch] < loss_valid[epoch - 1]:
+        if (epoch > 0 and loss_valid[epoch] < loss_valid[epoch - 1]) or epoch == 0:
             torch.save(net.state_dict(), network_file)
 
     plt.clf()

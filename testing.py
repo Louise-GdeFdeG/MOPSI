@@ -7,19 +7,34 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Width of the nn
-W = 3
 
-
-def testing(N: int, function: str):
+def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     """ Display the function and its approximation by our network.
     
     Arguments:
-        N {int} -- Number of known points
-        function {str} -- Function identification
+        W {int} -- The width of our nn.
+        L {int} -- The depth of our nn.
+        N {int} -- The number of known points of the function.
+        NB_EPOCH {int} -- The number of epoch on which we train our nn.
+        lr {float} -- The learning rate we are considering.
+        function {str} -- The function identification.
     """
     path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
-    network_file = "trained_nn_" + function + "_" + str(N) + ".pt"
+    network_file = (
+        "trained_nn_"
+        + function
+        + "_"
+        + str(W)
+        + "_"
+        + str(L)
+        + "_"
+        + str(N)
+        + "_"
+        + str(NB_EPOCH)
+        + "_"
+        + str(lr)
+        + ".pt"
+    )
 
     # We load the training we done on the net.
     net = Net(W)
