@@ -17,3 +17,7 @@ It is in the preprocess files that the sets of data are created. Here, it includ
 5. A `testing.py`file: this is here our model is tested (plots the function, its approximation and the error). It is a generic function.
 
 6.  A **testing_network folder**: it contains the testing files. There is one testing file per function in which we call the function defined in `testing.py`.
+
+7. A **Meeting_notes folder**: it includes the notes taken during our meetings with our supervisor.
+
+8. An **Analysis folder**: it contains a report about the tests we've done.

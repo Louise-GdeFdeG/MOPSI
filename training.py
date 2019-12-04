@@ -7,26 +7,19 @@ import math
 import matplotlib.pyplot as plt
 
 
-"""The constants used, the ones we are going to change to assess
-their impact on the quality on the model."""
-# Width of the nn
-W = 3
-# Depth of the nn (number of layer)
-L = 3
-# Number of epoch = number of time our nn trains on the data.
-# (it understands fast but we have to explain to it several time)
-NB_EPOCH = 10
-# The maximum gap we want between the target value and the value given
-# by the model
-# learning_rate = 0.001
-learning_rate = 0.0001
-
-
-def training(N: int, function: str):
+def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     """ Function used to train our network.
     
     Arguments:
         N {int} -- The number of known points of the function.
+        function {str} -- The function identification.
+    
+    Arguments:
+        W {int} -- The width of our nn.
+        L {int} -- The depth of our nn.
+        N {int} -- The number of known points of the function.
+        NB_EPOCH {int} -- The number of epoch on which we train our nn.
+        lr {float} -- The learning rate we are considering.
         function {str} -- The function identification.
     """
     # Criterion used to measure the error of our model :
@@ -37,12 +30,12 @@ def training(N: int, function: str):
     net = Net(W)
 
     # The optimizer here is Adam (classic) (eventually to change, after the other tests - gradient descent)
-    optim = torch.optim.Adam(net.parameters(), lr=learning_rate)
+    optim = torch.optim.Adam(net.parameters(), lr=lr)
 
     # Get the data we saved
     data_file = "data_" + function + "_" + str(N) + ".pkl"
-    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/preprocessing/"
-    with open(path + data_file, "rb") as f:
+    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+    with open(path + "preprocessing/" + data_file, "rb") as f:
         data = pkl.load(f)
 
     training_set = data["train"]
@@ -50,10 +43,19 @@ def training(N: int, function: str):
     test_set = data["test"]
 
     network_file = (
-        "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/trained_network/trained_nn_"
+        path
+        + "trained_network/trained_nn_"
         + function
         + "_"
+        + str(W)
+        + "_"
+        + str(L)
+        + "_"
         + str(N)
+        + "_"
+        + str(NB_EPOCH)
+        + "_"
+        + str(lr)
         + ".pt"
     )
     loss_train = []
@@ -98,14 +100,14 @@ def training(N: int, function: str):
         np.random.shuffle(validation_set)
         np.random.shuffle(training_set)
         # we save the training after each epoch only if the validation loss has decreased
-        if epoch > 0 and loss_valid[epoch] < loss_valid[epoch-1]:
+        if epoch > 0 and loss_valid[epoch] < loss_valid[epoch - 1]:
             torch.save(net.state_dict(), network_file)
-    
+
     plt.clf()
     fig, ax1 = plt.subplots()
 
     ax1.set_xlabel("Number of epochs", fontsize=18)
-    ax1.set_ylabel("Sum of loss for training", color='blue', fontsize=16)
+    ax1.set_ylabel("Sum of loss for training", color="blue", fontsize=16)
     ax1.plot([i + 1 for i in range(NB_EPOCH)], loss_train, "b--")
     ax1.tick_params(axis="y", labelcolor="blue")
 
