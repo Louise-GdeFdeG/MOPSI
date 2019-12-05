@@ -68,6 +68,23 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
                 torch.FloatTensor([x]),
                 torch.FloatTensor([target]),
             )
+            # Push the input through the network
+            output = net(x_tensor)
+            # Reset the gradient buffers
+            optim.zero_grad()
+            # Compute the loss
+            loss = criterion(output, target_tensor)
+            # Compute the gradient of the loss and backpropagate it
+            loss.backward()
+            # Update the network with the chosen optimizer
+            optim.step()
+            # Add the value of the loss to the partial sum
+            sum_loss_training += loss.item()
+            x, target = training_set[i][0], training_set[i][1]
+            x_tensor, target_tensor = (
+                torch.FloatTensor([x]),
+                torch.FloatTensor([target]),
+            )
             optim.zero_grad()
             output = net(x_tensor)
             loss = criterion(output, target_tensor)
