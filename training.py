@@ -25,12 +25,16 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # network creation
     net = Net(W)
 
-    # The optimizer here is Adam (classic) (eventually to change, after the other tests - gradient descent)
+    # The optimizer here is Adam (classic)
+    # (eventually to change, after the other tests - gradient descent)
     optim = torch.optim.Adam(net.parameters(), lr=lr)
 
     # Get the data we saved
     data_file = "data_" + function + "_" + str(N) + ".pkl"
-    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+    # pour Louise 
+    # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+    # Pour Vivi
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
     with open(path + "preprocessing/" + data_file, "rb") as f:
         data = pkl.load(f)
 
@@ -54,10 +58,15 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         + str(lr)
         + ".pt"
     )
+
+    # Initialize the loss lists, in which we will stock the total loss for
+    # each epoch.
     loss_train = []
     loss_valid = []
     for epoch in range(NB_EPOCH):
         sum_loss_training = 0
+        # Compute the optimization for each point in the training set
+        # -------------------------------TRAINING-----------------------------#
         for i in tqdm(
             range(len(training_set)), desc="Training for epoch " + str(epoch)
         ):
@@ -80,39 +89,40 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
             optim.step()
             # Add the value of the loss to the partial sum
             sum_loss_training += loss.item()
-            x, target = training_set[i][0], training_set[i][1]
-            x_tensor, target_tensor = (
-                torch.FloatTensor([x]),
-                torch.FloatTensor([target]),
-            )
-            optim.zero_grad()
-            output = net(x_tensor)
-            loss = criterion(output, target_tensor)
-            loss.backward()
-            optim.step()
-            sum_loss_training += loss.item()
+        # Stock and print the total loss on the period that just ended
         loss_train.append(sum_loss_training)
         print(sum_loss_training)
         sum_loss_validation = 0
+
+        # ----------------------------VALIDATION---------------------------#
+        # In this step, we compute the losses on the training set without
+        # backprop of the gradient.
+        # If the total validation loss has decreased compared to the latest
+        # epoch we save the learnings.
         for i in tqdm(
             range(len(validation_set)), desc="Validation for epoch " + str(epoch)
         ):
-            # Validation
             # x and target must be tensors
             x, target = validation_set[i][0], validation_set[i][1]
             x_tensor, target_tensor = (
                 torch.FloatTensor([x]),
                 torch.FloatTensor([target]),
             )
-            optim.zero_grad()
+            # Push the input through the network
             output = net(x_tensor)
+            # Reset the gradient buffers
+            optim.zero_grad()
+            # Compute the loss
             loss = criterion(output, target_tensor)
+            # Add the value of the loss to the partial sum
             sum_loss_validation += loss.item()
         loss_valid.append(sum_loss_validation)
         print(sum_loss_validation)
+
         np.random.shuffle(validation_set)
         np.random.shuffle(training_set)
-        # we save the training after each epoch only if the validation loss has decreased
+        # We save the training after each epoch only if the validation loss
+        # has decreased
         if (epoch > 0 and loss_valid[epoch] < loss_valid[epoch - 1]) or epoch == 0:
             torch.save(net.state_dict(), network_file)
 
