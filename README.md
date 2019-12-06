@@ -21,3 +21,5 @@ It is in the preprocess files that the sets of data are created. Here, it includ
 7. A **Meeting_notes folder**: it includes the notes taken during our meetings with our supervisor.
 
 8. An **Analysis folder**: it contains a report about the tests we've done.
+
+9. A 'Notes_PyTorch.docx' file : summary of a quickstarter on PyTorch. 
