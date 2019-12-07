@@ -12,11 +12,11 @@ It is in the preprocess files that the sets of data are created. Here, it includ
 
 3. A `training.py` file: this is here our model is trained and saved. It is a generic function.
 
-4. A **trained_network folder**: it contains the training files. There is one training file per function in which we call the function defined in `training.py`. It also contains the trained networks.
+4. A **trained_network folder**: it contains the training files. There is one training file called 'training_function.py' in which we call the code defined in `training.py`. There is only one file for all the functions. To change the function to approximate, one must change the id_function parameter in constant.py . It also contains the trained networks.
 
-5. A `testing.py`file: this is here our model is tested (plots the function, its approximation and the error). It is a generic function.
+5. A `testing.py`file: this is where our model is tested (plots the function, its approximation and the error). It is a generic function.
 
-6.  A **testing_network folder**: it contains the testing files. There is one testing file per function in which we call the function defined in `testing.py`.
+6.  A **testing_network folder**: it contains the testing file, called 'testing_function.py' . There is one testing file for all the functions in which we call the function defined in `testing.py`. To change the function to approximate, one must change the id_function parameter in constant.py . It also contains the trained networks.
 
 7. A **Meeting_notes folder**: it includes the notes taken during our meetings with our supervisor.
 
