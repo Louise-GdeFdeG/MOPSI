@@ -142,7 +142,7 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     ax2.plot([i + 1 for i in range(NB_EPOCH)], loss_valid, "r--")
     ax2.tick_params(axis="y", labelcolor="red")
 
-    plt.title("Loss value depending on the number of epochs done", fontsize=20)
+    plt.title("Approximating " + function  + ": Loss value depending on the number of epochs done", fontsize=20)
     plt.grid()
     fig.tight_layout()  # otherwise the right y-label is slightly clipped
     plt.show()

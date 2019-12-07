@@ -16,10 +16,12 @@ L = 2
 N = 2000
 # Number of epoch = number of time our nn trains on the data.
 # (it understands fast but we have to explain to it several time)
-NB_EPOCH = 100
+NB_EPOCH = 10
 # The maximum gap we want between the target value and the value given
 # by the model
 learning_rate = 0.0001
 
 # The identification of the function
-id_function = "constant"
+id_function = "polynomial"
+# For constant function : id_function = "constant"
+# For piecewise function : id_function = "piecewise"

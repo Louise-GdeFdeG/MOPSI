@@ -7,7 +7,7 @@ import pickle as pkl
 def create_data(N: int, f, function: str):
     """This function is used to create the sets of data. It also saves them
     following a particular syntax for the file names.
-    
+
     Arguments:
         N {int} -- The number of known points of the function.
         f {function} -- The function we are interested in.
@@ -38,6 +38,9 @@ def create_data(N: int, f, function: str):
         "test": test_set_f,
     }
     data_file = "data_" + function + "_" + str(N) + ".pkl"
-    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/preprocessing/"
+    # Pour Louise :
+    # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/preprocessing/"
+    # Pour Vivi :
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/preprocessing/"
     with open(path + data_file, "wb") as f:
         pkl.dump(dictionnary_f, f)

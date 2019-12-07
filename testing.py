@@ -10,7 +10,7 @@ import numpy as np
 
 def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     """ Display the function and its approximation by our network.
-    
+
     Arguments:
         W {int} -- The width of our nn.
         L {int} -- The depth of our nn.
@@ -19,7 +19,12 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         lr {float} -- The learning rate we are considering.
         function {str} -- The function identification.
     """
-    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+
+    # -----------------------IMPORT TRAINED NETWORK---------------------------#
+    # Pour Louise :
+    # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+    # Pour Vivi :
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
     network_file = (
         "trained_nn_"
         + function
@@ -39,6 +44,7 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # We load the training we done on the net.
     net = Net(W)
     net.load_state_dict(torch.load(path + "trained_network/" + network_file))
+    # Set the net on evaluation mode
     net.eval()
 
     # Get the data we saved
@@ -50,12 +56,19 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     validation_set = data["valid"]
     test_set = data["test"]
 
-    # Testing
-    error = []
+    # ---------------------------TESTING ----------------------------------- #
+
     criterion = nn.MSELoss()
-    h_x = []
+
+    # Initialize the lists for plotting
+    error = []
     abscissa = []
+    # Values of the target function
+    h_x = []
+    # Values of the approximation given by the network
     approximation = []
+
+    # COmpute the approximation and the error fot each value in test_set
     for i in range(len(test_set)):
         x, target = test_set[i][0], test_set[i][1]
         abscissa.append(x)
@@ -79,15 +92,17 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     ax2.set_ylabel(
         "Approximation by NN", color="red", fontsize=14
     )  # we already handled the x-label with ax1
-    ax2.plot(abscissa, approximation, "r--")
+    ax2.plot(abscissa, approximation, "r+")
     ax2.tick_params(axis="y", labelcolor="red")
 
-    plt.title("Comparison between the function and its approximation", fontsize=16)
+    plt.title("Comparison between "+ function + " function and its approximation", 
+              fontsize=16)
     plt.grid()
     fig.tight_layout()  # otherwise the right y-label is slightly clipped
 
     plt.show()
 
-    plt.plot(abscissa, error, color="green")
-    plt.title("Error between the function and the approximation", fontsize=16)
+    plt.plot(abscissa, error, "go")
+    plt.title("Error between " + function + " function and the approximation",
+              fontsize=16)
     plt.show()
