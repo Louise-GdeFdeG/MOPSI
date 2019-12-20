@@ -30,7 +30,7 @@ class Net(nn.Module):
             float -- The approximation of our model of f(x)
         """
         out_lin_1 = F.relu(self.lin_1(x))
-        out_lin_2 = F.relu(self.lin_2(out_lin_1))
+        out_lin_2 = self.lin_2(out_lin_1)
         # out_lin_3 = F.relu(self.lin_3(out_lin_2))
         # out_lin_4 = F.relu(self.lin_4(out_lin_3))
         # out_lin_5 = F.relu(self.lin_5(out_lin_4))

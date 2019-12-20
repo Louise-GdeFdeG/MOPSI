@@ -34,9 +34,9 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # pour Louise 
     # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
     # Pour Vivi
-    # path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
     # Pour Jean
-    path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/"
+    #path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/"
     with open(path + "preprocessing/" + data_file, "rb") as f:
         data = pkl.load(f)
 
