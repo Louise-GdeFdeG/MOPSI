@@ -14,10 +14,10 @@ class Net(nn.Module):
         super(Net, self).__init__()
         # an affine operation (here we have 3 layers): y = Wx + b
         self.lin_1 = nn.Linear(1, W)  # the input of the first layer is a float
-        self.lin_2 = nn.Linear(W, W)
-        self.lin_3 = nn.Linear(W, W)
-        self.lin_4 = nn.Linear(W, W)
-        self.lin_5 = nn.Linear(W, 1)  # the output of the last layer is a float
+        # self.lin_2 = nn.Linear(W, W)
+        # self.lin_3 = nn.Linear(W, W)
+        # self.lin_4 = nn.Linear(W, W)
+        self.lin_2 = nn.Linear(W, 1)  # the output of the last layer is a float
 
     def forward(self, x: float):
         """ Describes how our model works. The input passes through each
@@ -31,7 +31,7 @@ class Net(nn.Module):
         """
         out_lin_1 = F.relu(self.lin_1(x))
         out_lin_2 = F.relu(self.lin_2(out_lin_1))
-        out_lin_3 = F.relu(self.lin_3(out_lin_2))
-        out_lin_4 = F.relu(self.lin_4(out_lin_3))
-        out_lin_5 = F.relu(self.lin_5(out_lin_4))
-        return out_lin_5
+        # out_lin_3 = F.relu(self.lin_3(out_lin_2))
+        # out_lin_4 = F.relu(self.lin_4(out_lin_3))
+        # out_lin_5 = F.relu(self.lin_5(out_lin_4))
+        return out_lin_2

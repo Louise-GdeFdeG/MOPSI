@@ -11,12 +11,12 @@ Learning_rate = [1e-4, 1e-3, 1e-2]"""
 # Width of the nn
 W = 5
 # Depth of the nn (number of layer)
-L = 5
+L = 2
 # The number of known points of the function.
 N = 2000
 # Number of epoch = number of time our nn trains on the data.
 # (it understands fast but we have to explain to it several time)
-NB_EPOCH = 10
+NB_EPOCH = 100
 # The maximum gap we want between the target value and the value given
 # by the model
 learning_rate = 0.0001
