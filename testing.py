@@ -10,6 +10,7 @@ import numpy as np
 
 def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     """ Display the function and its approximation by our network.
+    
 
     Arguments:
         W {int} -- The width of our nn.
@@ -18,6 +19,8 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         NB_EPOCH {int} -- The number of epoch on which we train our nn.
         lr {float} -- The learning rate we are considering.
         function {str} -- The function identification.
+    Returns : 
+        totalerror {tensor} The total error calculated on the testing set
     """
 
     # -----------------------IMPORT TRAINED NETWORK---------------------------#

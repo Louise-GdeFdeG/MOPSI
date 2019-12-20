@@ -36,6 +36,8 @@ ax1.plot(WW, errormax, "b+", label="Error + Sigma")
 ax1.plot(WW, errorplot, "r+", label="Average error")
 ax1.plot(WW, errormin, "g+", label = "Error - Sigma")
 
+plt.title("Total error on approximation of "+id_function+" depending on W with constants L=" + str(L) + " NB_EPOCH=" + str(NB_EPOCH),
+              fontsize=16)
 plt.legend(loc="upper right")
 plt.show()
 

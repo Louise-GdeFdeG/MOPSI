@@ -20,13 +20,13 @@ LL = [2, 3, 5, 7, 10]
 N = 2000
 # Number of epoch = number of time our nn trains on the data.
 # (it understands fast but we have to explain to it several time)
-NB_EPOCH = 10
+NB_EPOCH = 3
 # The maximum gap we want between the target value and the value given
 # by the model
 learning_rate = 0.0001
 
 # Number of times we will calculate the error for a given (W, L)
-N_ite = 5
+N_ite = 2
 
 # The identification of the function
 id_function = "polynomial"
