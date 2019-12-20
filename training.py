@@ -31,10 +31,10 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
 
     # Get the data we saved
     data_file = "data_" + function + "_" + str(N) + ".pkl"
-    # pour Louise 
-    # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+    # pour Louise
+    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
     # Pour Vivi
-    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    # path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
     with open(path + "preprocessing/" + data_file, "rb") as f:
         data = pkl.load(f)
 
@@ -63,12 +63,13 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # each epoch.
     loss_train = []
     loss_valid = []
+    abscissa = []
     for epoch in range(NB_EPOCH):
         sum_loss_training = 0
         # Compute the optimization for each point in the training set
         # -------------------------------TRAINING-----------------------------#
         for i in tqdm(
-            range(len(training_set)), desc="Training for epoch " + str(epoch)
+            range(len(training_set)), desc="Training for epoch " + str(1 + epoch)
         ):
             # Training
             # x and target must be tensors
@@ -100,7 +101,7 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         # If the total validation loss has decreased compared to the latest
         # epoch we save the learnings.
         for i in tqdm(
-            range(len(validation_set)), desc="Validation for epoch " + str(epoch)
+            range(len(validation_set)), desc="Validation for epoch " + str(1 + epoch)
         ):
             # x and target must be tensors
             x, target = validation_set[i][0], validation_set[i][1]
@@ -125,13 +126,14 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         # has decreased
         if (epoch > 0 and loss_valid[epoch] < loss_valid[epoch - 1]) or epoch == 0:
             torch.save(net.state_dict(), network_file)
+        abscissa.append(epoch)
 
     plt.clf()
     fig, ax1 = plt.subplots()
 
-    ax1.set_xlabel("Number of epochs", fontsize=18)
+    ax1.set_xlabel("Number of epochs", fontsize=16)
     ax1.set_ylabel("Sum of loss for training", color="blue", fontsize=16)
-    ax1.plot([i + 1 for i in range(NB_EPOCH)], loss_train, "b--")
+    ax1.plot(abscissa, loss_train, "b--")
     ax1.tick_params(axis="y", labelcolor="blue")
 
     ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
@@ -139,10 +141,17 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     ax2.set_ylabel(
         "Sum of loss for validation", color="red", fontsize=16
     )  # we already handled the x-label with ax1
-    ax2.plot([i + 1 for i in range(NB_EPOCH)], loss_valid, "r--")
+    ax2.plot(abscissa, loss_valid, "r--")
     ax2.tick_params(axis="y", labelcolor="red")
 
-    plt.title("Approximating " + function  + ": Loss value depending on the number of epochs done", fontsize=20)
+    plt.title(
+        "Approximating "
+        + function
+        + " function: Sum of loss value for "
+        + str(NB_EPOCH)
+        + " epochs",
+        fontsize=20,
+    )
     plt.grid()
-    fig.tight_layout()  # otherwise the right y-label is slightly clipped
+    # fig.tight_layout()  # otherwise the right y-label is slightly clipped
     plt.show()

@@ -23,8 +23,8 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # -----------------------IMPORT TRAINED NETWORK---------------------------#
     # Pour Louise :
     # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
-    # Pour Vivi :
-    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    # Pour Vivi : "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
     network_file = (
         "trained_nn_"
         + function
@@ -84,7 +84,7 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
 
     ax1.set_xlabel("Abscissa", fontsize=14)
     ax1.set_ylabel(function + " function", color="blue", fontsize=14)
-    ax1.plot(abscissa, h_x, "b^")
+    ax1.plot(abscissa, h_x, "b+")
     ax1.tick_params(axis="y", labelcolor="blue")
 
     ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
@@ -95,14 +95,17 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     ax2.plot(abscissa, approximation, "r+")
     ax2.tick_params(axis="y", labelcolor="red")
 
-    plt.title("Comparison between "+ function + " function and its approximation", 
-              fontsize=16)
+    plt.title(
+        "Comparison between " + function + " function and its approximation",
+        fontsize=16,
+    )
     plt.grid()
     fig.tight_layout()  # otherwise the right y-label is slightly clipped
 
     plt.show()
 
-    plt.plot(abscissa, error, "go")
-    plt.title("Error between " + function + " function and the approximation",
-              fontsize=16)
+    plt.plot(abscissa, error, "g+")
+    plt.title(
+        "Error between " + function + " function and the approximation", fontsize=16
+    )
     plt.show()

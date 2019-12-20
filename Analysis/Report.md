@@ -17,35 +17,35 @@ When it happens, the loss values are always the same: 1600 for the sum of loss f
 ### Tests on `data_constant_2000.pkl`
 **How can we interpret the shape of the error function?**
 * W = 5, L = 2, N = 2000, **NB_EPOCH = 1**, learning_rate = 0.0001  
-![Comparison between the function and its approximation](/graphs/testing_constant_5_2_2000_1_0.0001.png)
-![Error value](/graphs/error_constant_5_2_2000_1_0.0001.png)
+![Comparison between the function and its approximation](./graphs/constant/testing_constant_5_2_2000_1_0.0001.png)
+![Error value](./graphs/constant/error_constant_5_2_2000_1_0.0001.png)
 
 * W = 5, L = 2, N = 2000, **NB_EPOCH = 5**, learning_rate = 0.0001  
-![Sum of loss value](/graphs/training_validation_constant_5_2_2000_5_0.0001.png)
+![Sum of loss value](./graphs/constant/training_validation_constant_5_2_2000_5_0.0001.png)
 After 5 epochs, the sum of loss value of the training is roughly of 0.242.
-![Comparison between the function and its approximation](/graphs/testing_constant_5_2_2000_5_0.0001.png)  
+![Comparison between the function and its approximation](./graphs/constant/testing_constant_5_2_2000_5_0.0001.png)  
 I don't know why the function has this shape... 
-![Error value](/graphs/error_constant_5_2_2000_5_0.0001.png)
+![Error value](./graphs/constant/error_constant_5_2_2000_5_0.0001.png)
 
 
 * W = 5, L = 2, N = 2000, **NB_EPOCH = 10**, learning_rate = 0.0001  
-![Sum of loss value](/graphs/training_validation_constant_5_2_2000_10_0.0001.png)
+![Sum of loss value](./graphs/constant/training_validation_constant_5_2_2000_10_0.0001.png)
 After 10 epochs, the sum of loss value of the training is between 5.50e-3 and 5.25e-3.  
-![Comparison between the function and its approximation](/graphs/testing_constant_5_2_2000_10_0.0001.png)
-![Error value](/graphs/error_constant_5_2_2000_10_0.0001.png)
+![Comparison between the function and its approximation](./graphs/constant/testing_constant_5_2_2000_10_0.0001.png)
+![Error value](./graphs/constant/error_constant_5_2_2000_10_0.0001.png)
 
 * W = 5, L = 2, N = 2000, **NB_EPOCH = 50**, learning_rate = 0.0001  
-![Sum of loss value](/graphs/training_validation_constant_5_2_2000_50_0.0001.png)
+![Sum of loss value](./graphs/constant/training_validation_constant_5_2_2000_50_0.0001.png)
 After 50 epochs, the sum of loss value of the training is lower than 1e-5 and that of the validation is lower than 1e-8.
-![Comparison between the function and its approximation](/graphs/testing_constant_5_2_2000_50_0.0001.png)
+![Comparison between the function and its approximation](./graphs/constant/testing_constant_5_2_2000_50_0.0001.png)
 Gives the right value (they are all really close to 1), but does it give the right f(x) ?
-![Error value](/graphs/error_constant_5_2_2000_50_0.0001.png)
+![Error value](./graphs/constant/error_constant_5_2_2000_50_0.0001.png)
 
 * W = 5, L = 2, N = 2000, **NB_EPOCH = 100**, learning_rate = 0.0001 
-![Sum of loss value](/graphs/training_validation_constant_5_2_2000_100_0.0001.png)
+![Sum of loss value](./graphs/constant/training_validation_constant_5_2_2000_100_0.0001.png)
 After 8 epochs, the sum of loss value of the validation is already below 0.5.
 After 5 epochs, the sum of loss value of the training is below 10.
 After 20 epochs, the sum of loss value of the validation is below 0.01 and that of the training is below 0.1.
 After 24 epochs, the sum of loss value of the validation is below 1e-5 and that of the training is below 5e-4.
-![Comparison between the function and its approximation](/graphs/testing_constant_5_2_2000_100_0.0001.png)
-![Error value](/graphs/error_constant_5_2_2000_100_0.0001.png)
+![Comparison between the function and its approximation](./graphs/constant/testing_constant_5_2_2000_100_0.0001.png)
+![Error value](./graphs/constant/error_constant_5_2_2000_100_0.0001.png)

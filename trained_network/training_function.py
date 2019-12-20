@@ -6,7 +6,7 @@ import sys
 # Pour Louise :
 sys.path.insert(1, "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI")
 # Pour Vivi :
-sys.path.insert(1, "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/")
+# sys.path.insert(1, "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/")
 from training import training
 from constant import *
 
