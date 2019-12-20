@@ -101,3 +101,6 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     plt.title("Error between " + function + " function and the approximationW=" + str(W) + "L=" + str(L),
               fontsize=16)
     plt.show()
+    totalerror = sum(error).item()
+    print("Total error: ", totalerror)
+    return(totalerror)

@@ -14,3 +14,5 @@ from constant import *
 
 
 training(W, L, N, NB_EPOCH, learning_rate, id_function)
+import statistics
+bla = [0, 1, 2, 3]
