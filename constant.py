@@ -11,7 +11,7 @@ Learning_rate = [1e-4, 1e-3, 1e-2]"""
 # Width of the nn
 W = 5
 # Depth of the nn (number of layer)
-L = 2
+L = 5
 # The number of known points of the function.
 N = 2000
 # Number of epoch = number of time our nn trains on the data.
