@@ -34,7 +34,9 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # pour Louise
     path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
     # Pour Vivi
-    # path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    # Pour Jean
+    # path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/"
     with open(path + "preprocessing/" + data_file, "rb") as f:
         data = pkl.load(f)
 
@@ -144,14 +146,23 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     ax2.plot(abscissa, loss_valid, "r--")
     ax2.tick_params(axis="y", labelcolor="red")
 
+    # plt.title(
+    #     "Approximating "
+    #     + function
+    #     + " function: Sum of loss value for "
+    #     + str(NB_EPOCH)
+    #     + " epochs",
+    #     fontsize=20,
+    # )
+    # Titre "long" :
     plt.title(
         "Approximating "
         + function
-        + " function: Sum of loss value for "
-        + str(NB_EPOCH)
-        + " epochs",
+        + ": Loss value depending on the number of epochs done",
         fontsize=20,
     )
+    # Titre plus court :
+    # plt.title("Loss value depending on the number of epochs done", fontsize=20)
     plt.grid()
     # fig.tight_layout()  # otherwise the right y-label is slightly clipped
     plt.show()

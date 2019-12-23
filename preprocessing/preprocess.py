@@ -40,7 +40,14 @@ def create_data(N: int, f, function: str):
     data_file = "data_" + function + "_" + str(N) + ".pkl"
     # Pour Louise :
     # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/preprocessing/"
+<<<<<<< HEAD
     # Pour Vivi : "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/preprocessing/"
     path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/preprocessing/"
+=======
+    # Pour Vivi :
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/preprocessing/"
+    # Pour Jean : 
+    #path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/preprocessing/"
+>>>>>>> 84bc2252318cdbb987a6e1b8183d4fa5d540e5cb
     with open(path + data_file, "wb") as f:
         pkl.dump(dictionnary_f, f)

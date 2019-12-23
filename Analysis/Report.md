@@ -47,5 +47,8 @@ After 8 epochs, the sum of loss value of the validation is already below 0.5.
 After 5 epochs, the sum of loss value of the training is below 10.
 After 20 epochs, the sum of loss value of the validation is below 0.01 and that of the training is below 0.1.
 After 24 epochs, the sum of loss value of the validation is below 1e-5 and that of the training is below 5e-4.
-![Comparison between the function and its approximation](./graphs/constant/testing_constant_5_2_2000_100_0.0001.png)
-![Error value](./graphs/constant/error_constant_5_2_2000_100_0.0001.png)
+![Comparison between the function and its approximation](/graphs/testing_constant_5_2_2000_100_0.0001.png)
+![Error value](/graphs/error_constant_5_2_2000_100_0.0001.png)
+
+### Tests on `data_polynomial_2000.pkl`
+For W = 5 and N_Epoch = 10, it appears that the error decreases between L=2 and L = 3. After that, the error appears to stagnate when L rises up to 10. Maybe when L rises, the network can be more precise but needs more epochs, as it has more neurons. 

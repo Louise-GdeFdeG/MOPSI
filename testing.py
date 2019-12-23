@@ -10,6 +10,7 @@ import numpy as np
 
 def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     """ Display the function and its approximation by our network.
+    
 
     Arguments:
         W {int} -- The width of our nn.
@@ -18,13 +19,17 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         NB_EPOCH {int} -- The number of epoch on which we train our nn.
         lr {float} -- The learning rate we are considering.
         function {str} -- The function identification.
+    Returns : 
+        totalerror {tensor} The total error calculated on the testing set
     """
 
     # -----------------------IMPORT TRAINED NETWORK---------------------------#
     # Pour Louise :
     # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
-    # Pour Vivi : "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
-    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+    # Pour Vivi :
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    # Pour Jean :
+    # path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/"
     network_file = (
         "trained_nn_"
         + function
@@ -83,20 +88,30 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     fig, ax1 = plt.subplots()
 
     ax1.set_xlabel("Abscissa", fontsize=14)
-    ax1.set_ylabel(function + " function", color="blue", fontsize=14)
-    ax1.plot(abscissa, h_x, "b+")
+    ax1.set_ylabel("Values", fontsize=14)
+    ax1.plot(abscissa, h_x, "b^", label="Objective function")
     ax1.tick_params(axis="y", labelcolor="blue")
+    ax1.plot(abscissa, approximation, "r+", label="Approximation by NN")
 
-    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+    # ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
 
-    ax2.set_ylabel(
-        "Approximation by NN", color="red", fontsize=14
-    )  # we already handled the x-label with ax1
-    ax2.plot(abscissa, approximation, "r+")
-    ax2.tick_params(axis="y", labelcolor="red")
+    # ax2.set_ylabel(
+    #     "Approximation by NN", color="red", fontsize=14
+    # )  # we already handled the x-label with ax1
+    # ax2.plot(abscissa, approximation, "r+")
+    # ax2.tick_params(axis="y", labelcolor="red")
 
+    # plt.title(
+    #     "Comparison between " + function + " function and its approximation",
+    #     fontsize=16,
+    # )
     plt.title(
-        "Comparison between " + function + " function and its approximation",
+        "Comparison between "
+        + function
+        + " function and its approximation. W="
+        + str(W)
+        + "L="
+        + str(L),
         fontsize=16,
     )
     plt.grid()
@@ -104,8 +119,21 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
 
     plt.show()
 
-    plt.plot(abscissa, error, "g+")
+    # plt.plot(abscissa, error, "g+")
+    # plt.title(
+    #     "Error between " + function + " function and the approximation", fontsize=16
+    # )
+    plt.plot(abscissa, error, "go")
     plt.title(
-        "Error between " + function + " function and the approximation", fontsize=16
+        "Error between "
+        + function
+        + " function and the approximationW="
+        + str(W)
+        + "L="
+        + str(L),
+        fontsize=16,
     )
     plt.show()
+    totalerror = sum(error).item()
+    print("Total error: ", totalerror)
+    return totalerror

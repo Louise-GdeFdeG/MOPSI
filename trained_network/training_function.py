@@ -4,11 +4,19 @@ import sys
 
 # insert at 1, 0 is the script path (or '' in REPL)
 # Pour Louise :
-sys.path.insert(1, "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI")
+# sys.path.insert(1, "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI")
 # Pour Vivi :
+<<<<<<< HEAD
 # sys.path.insert(1, "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/")
+=======
+sys.path.insert(1, "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/")
+# Pour Jean :
+#sys.path.insert(1, "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/")
+>>>>>>> 84bc2252318cdbb987a6e1b8183d4fa5d540e5cb
 from training import training
 from constant import *
 
 
 training(W, L, N, NB_EPOCH, learning_rate, id_function)
+import statistics
+bla = [0, 1, 2, 3]

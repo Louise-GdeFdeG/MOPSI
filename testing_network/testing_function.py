@@ -3,7 +3,10 @@
 import sys
 
 # insert at 1, 0 is the script path (or '' in REPL)
-sys.path.insert(1, "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI")
+# Pour Louise:
+#sys.path.insert(1, "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI")
+# Pour Vivi :
+sys.path.insert(1, "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/")
 from testing import testing
 from constant import *
 
