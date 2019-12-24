@@ -21,9 +21,22 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # Criterion used to measure the error of our model :
     # Mean Square Error
     criterion = nn.MSELoss()
-
-    # network creation
-    net = Net(W)
+    
+    # Network creation : call the class that matches the L argument
+    if L == 2:
+        net = Net2(W)
+    elif L == 3:
+        net = Net3(W)
+    elif L == 4:
+        net = Net4(W)
+    elif L == 5:
+        net = Net5(W)
+    elif L == 7:
+        net = Net7(W)
+    elif L == 10:
+        net = Net10(W)
+    else : 
+        print ("Error: L given in argument matches no Net class")
 
     # The optimizer here is Adam (classic)
     # (eventually to change, after the other tests - gradient descent)
