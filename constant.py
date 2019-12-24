@@ -3,7 +3,7 @@ This enables not to have to change the variables value everywhere."""
 
 """
 W = [5, 10, 50, 100]
-L = [2, 3, 5, 7, 10]
+L = [2, 3, 4, 5, 7, 10]
 N = [100, 500, 1000, 2000]
 NB_EPOCH = [1, 5, 10, 50, 100]
 Learning_rate = [1e-4, 1e-3, 1e-2]"""
@@ -15,7 +15,7 @@ WW = [5, 10, 50, 100]
 # Depth of the nn (number of layer)
 L = 10
 # Depths we will use
-LL = [2, 3, 5, 7, 10]
+LL = [2, 3, 4, 5, 7, 10]
 
 # The number of known points of the function.
 N = 2000
