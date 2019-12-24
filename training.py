@@ -1,10 +1,11 @@
-"""Training the neural network (nn) on a constant function"""
+"""Training the neural network (nn) on a function"""
 
-from network import Net, nn, torch
+from network import Net2, Net3, Net4, Net5, Net7, Net10, nn, torch
 from preprocessing.preprocess import pkl, np
 from tqdm import tqdm
 import math
 import matplotlib.pyplot as plt
+
 
 
 def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
@@ -35,8 +36,8 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         net = Net7(W)
     elif L == 10:
         net = Net10(W)
-    else : 
-        print ("Error: L given in argument matches no Net class")
+    else: 
+        print("Error: L given in argument matches no Net class")
 
     # The optimizer here is Adam (classic)
     # (eventually to change, after the other tests - gradient descent)
@@ -47,7 +48,7 @@ def training(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # pour Louise
     path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
     # Pour Vivi
-    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI2/"
     # Pour Jean
     # path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/"
     with open(path + "preprocessing/" + data_file, "rb") as f:

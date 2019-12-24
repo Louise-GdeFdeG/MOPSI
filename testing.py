@@ -1,6 +1,6 @@
 """Testing our neural network (nn) trained on a constant function"""
 
-from network import Net, nn, torch
+from network import Net2, Net3, Net4, Net5, Net7, Net10, nn, F, torch
 from preprocessing.preprocess import pkl
 from preprocessing.preprocess_constant import h
 import math
@@ -27,7 +27,7 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     # Pour Louise :
     # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
     # Pour Vivi :
-    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI/MOPSI/"
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI2/"
     # Pour Jean :
     # path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/"
     network_file = (
@@ -47,7 +47,21 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     )
 
     # We load the training we done on the net.
-    net = Net(W)
+    # Network creation : call the class that matches the L argument
+    if L == 2:
+        net = Net2(W)
+    elif L == 3:
+        net = Net3(W)
+    elif L == 4:
+        net = Net4(W)
+    elif L == 5:
+        net = Net5(W)
+    elif L == 7:
+        net = Net7(W)
+    elif L == 10:
+        net = Net10(W)
+    else:
+        print("Error: L given in argument matches no Net class")
     net.load_state_dict(torch.load(path + "trained_network/" + network_file))
     # Set the net on evaluation mode
     net.eval()
@@ -93,18 +107,6 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     ax1.tick_params(axis="y", labelcolor="blue")
     ax1.plot(abscissa, approximation, "r+", label="Approximation by NN")
 
-    # ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
-
-    # ax2.set_ylabel(
-    #     "Approximation by NN", color="red", fontsize=14
-    # )  # we already handled the x-label with ax1
-    # ax2.plot(abscissa, approximation, "r+")
-    # ax2.tick_params(axis="y", labelcolor="red")
-
-    # plt.title(
-    #     "Comparison between " + function + " function and its approximation",
-    #     fontsize=16,
-    # )
     plt.title(
         "Comparison between "
         + function
@@ -116,7 +118,7 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     )
     plt.grid()
     fig.tight_layout()  # otherwise the right y-label is slightly clipped
-
+    plt.legend(loc='upper right')
     plt.show()
 
     # plt.plot(abscissa, error, "g+")
@@ -133,6 +135,7 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         + str(L),
         fontsize=16,
     )
+
     plt.show()
     totalerror = sum(error).item()
     print("Total error: ", totalerror)

@@ -13,7 +13,7 @@ W = 5
 # Widths we will use
 WW = [5, 10, 50, 100]
 # Depth of the nn (number of layer)
-L = 10
+L = 3
 # Depths we will use
 LL = [2, 3, 4, 5, 7, 10]
 
@@ -30,8 +30,7 @@ learning_rate = 0.0001
 N_ite = 2
 
 # The identification of the function
-id_function = "constant"
+id_function = "polynomial"
 # For constant function : id_function = "constant"
 # For piecewise function : id_function = "piecewise"
 # For polyomial function : id_function = "polynomial"
-
