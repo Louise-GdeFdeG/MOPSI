@@ -117,7 +117,7 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         fontsize=16,
     )
     plt.grid()
-    fig.tight_layout()  # otherwise the right y-label is slightly clipped
+    #fig.tight_layout()  # otherwise the right y-label is slightly clipped
     plt.legend(loc='upper right')
     plt.show()
 

@@ -13,21 +13,21 @@ W = 5
 # Widths we will use
 WW = [5, 10, 50, 100]
 # Depth of the nn (number of layer)
-L = 3
+L = 7
 # Depths we will use
-LL = [2, 3, 4, 5, 7, 10]
+LL = [2, 3, 4, 5]
 
 # The number of known points of the function.
 N = 2000
 # Number of epoch = number of time our nn trains on the data.
 # (it understands fast but we have to explain to it several time)
-NB_EPOCH = 3
+NB_EPOCH = 15
 # The maximum gap we want between the target value and the value given
 # by the model
 learning_rate = 0.0001
 
 # Number of times we will calculate the error for a given (W, L)
-N_ite = 2
+N_ite = 10
 
 # The identification of the function
 id_function = "polynomial"
