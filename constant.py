@@ -15,7 +15,7 @@ WW = [5, 10, 50, 100]
 # Depth of the nn (number of layer)
 L = 7
 # Depths we will use
-LL = [2, 3, 4, 5]
+LL = [2, 3, 4, 5, 7, 10]
 
 # The number of known points of the function.
 N = 2000
