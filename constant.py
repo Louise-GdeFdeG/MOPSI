@@ -9,11 +9,11 @@ NB_EPOCH = [1, 5, 10, 50, 100]
 Learning_rate = [1e-4, 1e-3, 1e-2]"""
 
 # Width of the nn
-W = 50
+W = 7
 # Widths we will use
 WW = [5, 10, 50, 100]
 # Depth of the nn (number of layer)
-L = 2
+L = 7
 # Depths we will use
 LL = [2, 3, 4, 5, 7, 10]
 
@@ -21,7 +21,7 @@ LL = [2, 3, 4, 5, 7, 10]
 N = 2000
 # Number of epoch = number of time our nn trains on the data.
 # (it understands fast but we have to explain to it several time)
-NB_EPOCH = 10
+NB_EPOCH = 20
 # The maximum gap we want between the target value and the value given
 # by the model
 learning_rate = 0.001
@@ -30,10 +30,10 @@ learning_rate = 0.001
 N_ite = 5
 
 # The identification of the function
-id_function = "hat"
+id_function = "piecewise3"
 
 # For constant function : id_function = "constant"
-# For piecewise function : id_function = "piecewise"
+# For piecewise function : id_function = "piecewise" + number (2,4,10)
 # For polyomial function : id_function = "polynomial"
 # For hat function : id_function = "hat"
 # For truncated hat function : id_function = "truncated_hat"
