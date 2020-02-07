@@ -66,7 +66,6 @@ class Net4(nn.Module):
 
     def __init__(self, W: int):
         super(Net4, self).__init__()
-        # an affine operation (here we have 3 layers): y = Wx + b
         self.lin_1 = nn.Linear(1, W)  # the input of the first layer is a float
         self.lin_2 = nn.Linear(W, W)
         self.lin_3 = nn.Linear(W, W)
@@ -96,7 +95,6 @@ class Net5(nn.Module):
 
     def __init__(self, W: int):
         super(Net5, self).__init__()
-        # an affine operation (here we have 3 layers): y = Wx + b
         self.lin_1 = nn.Linear(1, W)  # the input of the first layer is a float
         self.lin_2 = nn.Linear(W, W)
         self.lin_3 = nn.Linear(W, W)
@@ -128,7 +126,6 @@ class Net7(nn.Module):
 
     def __init__(self, W: int):
         super(Net7, self).__init__()
-        # an affine operation (here we have 3 layers): y = Wx + b
         self.lin_1 = nn.Linear(1, W)  # the input of the first layer is a float
         self.lin_2 = nn.Linear(W, W)
         self.lin_3 = nn.Linear(W, W)
@@ -164,7 +161,6 @@ class Net10(nn.Module):
 
     def __init__(self, W: int):
         super(Net10, self).__init__()
-        # an affine operation (here we have 3 layers): y = Wx + b
         self.lin_1 = nn.Linear(1, W)  # the input of the first layer is a float
         self.lin_2 = nn.Linear(W, W)
         self.lin_3 = nn.Linear(W, W)

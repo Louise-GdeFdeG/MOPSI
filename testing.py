@@ -139,4 +139,12 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
     plt.show()
     totalerror = sum(error).item()
     print("Total error: ", totalerror)
+    if function == "nnW3L2":
+        print("Values of parameters of the learned nn")
+        print(  list(net.parameters()) ) 
+        nnorigin = Net2(3)
+        path = "C:/Users/viniv/OneDrive/Bureau/MOPSI2/preprocessing/nnw3L2.py"
+        nnorigin.load_state_dict(torch.load(path))
+        print("Values of parameters of the initial nn")
+        print(  list(nnorigin.parameters()) )
     return totalerror
