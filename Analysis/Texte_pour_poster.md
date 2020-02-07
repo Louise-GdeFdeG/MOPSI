@@ -1,29 +1,33 @@
 1. Fonction polynomiale/sinusoïde : cinfini
-  Plot de eL : pas très concluant.
-  L'approximation est optimale pour L entre 2 et 4.
-  Une explication possible est que si L est trop grand, il y a un trop grand nombre de paramètres à régler.
 
-  On voit sur l'exemple de l'approximation de la sinusoïde que le modèle est performant. L'approximation est très proche de la fonction d'origine.
+  On voit sur l'exemple de l'approximation de la sinusoïde que le modèle est performant. L'approximation est très proche de la fonction d'origine. [fichier `testing_sinus_10_5_2000_40_0.0001.png`]
 
-  Sur l'exemple polynomial, on voit l'effet du nombre de couches sur la précision.
+  Sur l'exemple polynomial, on voit l'effet du nombre de couches sur la précision dans le meilleur cas.
   Pour W, Nepoch, lr constant l'approximation dans le meilleur cas est bien meilleure pour L=7 que pour L=2.
+  [fichiers `testing_polynomial_5_2_2000_20_0.0001.png` et `testing_5_7_2000_20_0.001ter.png`]
 
   Pourtant, lorqu'on trace l'erreur en fonction de L (fichier eL_polynomial), on voit qu'à partir de L=5, l'erreur augmente à nouveau.
   Nous l'expliquons avec deux arguments :
   - Le phénomène de saturation expliqué dans les remarques générales apparaît plus fréquemment lorsqu'on augmente les dimensions du modèle.
   - On est sur un nombre d'époques faible, peut-être trop faible pour que les réseaux à grande dimensions aient le temps de bien se calibrer.
+  (fichier `eL_polynomial.png`)
 
 2. Fonction chapeau sans trou : continue, dérivée discontinue
 Bonne approximation avec W faible, L faible, et nepoch assez faible.
 
 3. Fonction chapeau avec trou : pas continue
 
-4. Fonction escalier avec un point de discontinuité : non continue, dérivée hyper discontinue
+4. Fonction escalier avec un point de discontinuité : non continue, dérivée hyper discontinue (piecewise2)
 
 Nos modèles ont été très performants dans ce cas.
 En effet, avec des valeurs faibles de W et L, on arrive déjà à une approximation correcte.
+[`testing_piecewise2_W7_L4_2000_10.png`]
 
-5. Fonction escalier avec plusieurs points de discontinuité : non continue, dérivée hyper discontinue
+5. Fonction escalier avec plusieurs points de discontinuité : non continue, dérivée hyper discontinue (piecewise3,4,10)
+
+On arrive à des résultats acceptables, pour des valeurs de WxL plus grandes, et un learning_rate beaucoup grand.
+[`testing_piecewise3_W100_L4_2000_10_0001.png`]
+
 
 6. Fonction nn
 
@@ -38,7 +42,7 @@ Ne disposant pas de serveurs de calculs, nous avons dû nous limiter à un nombr
 D'autre part, les réseaux neuronaux ont la réputation de mieux gérer les discontinuités que les méthodes traditionnelles (régression, interpolation).
 Nous l'avons vérifié dans 2 cas : unne fonction continue de dérivée discontinue (chapeau), et une fonction discontinue en 1 point(fonction escalier simple).
 Pour ces deux fonctions, on arrive à des approximations satisfaisantes pour W, L et nepoch faibles.
-Mais dès qu'il y a trop de discontinuité, nos réseaux ont du mal à suivre. Cela est flagrant pour les fonctions escalier avec plusieurs points de discontinuité.
+Mais dès qu'il y a trop de discontinuité, nos réseaux ont du mal à suivre. Cela est flagrant pour les fonctions escalier avec plusieurs points de discontinuité. Ils arrivent quand même à des résultats acceptables, mais il faut qu'ils aient des dimensions significativement supérieures à ceux qui traitent les fonctions continues.
 Nous pensons que c'est à cause des limites intrinsèques de nos modèles. Nos modèles sont des combinaisons de fonctions linéaires et de relus.
 Ces fonctions génèrent fatalement des fonctions continues. Mais elles peuvent facilement créer des fonctions dont la dérivée est discontinue, avec une discontinuité finie.
 
