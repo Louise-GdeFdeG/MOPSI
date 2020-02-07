@@ -1,4 +1,4 @@
-""" Initialization of the training sets ot the piecewise continuous function.
+""" Initialization of the training sets of the piecewise continuous function.
 """
 # Pour Louise et Vivi
 # from preprocessing.preprocess import np, pkl, create_data

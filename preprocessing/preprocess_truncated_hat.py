@@ -1,7 +1,29 @@
-""" Definition of the general function that is used to create and save de data.
+""" Initialization of the training sets of the hat function.
 """
-import numpy as np
-import pickle as pkl
+# Pour Louise et Vivi
+from preprocess import np, pkl
+
+# Pour Jean :
+# from preprocess import np, pkl, create_data
+
+# Number of points on which the value of the function is known.
+N = 2000
+
+
+def g(x: float):
+    """ The hat function that will be used to check
+    the quality of the approximation.
+
+    Arguments:
+        x {float} -- Will be taken in [0, 1]
+
+    Returns:
+        float
+    """
+    res = 2 * x
+    if x > 0.5:
+        res = 2 * (1 - x)
+    return res
 
 
 def create_data(N: int, f, function: str):
@@ -15,7 +37,7 @@ def create_data(N: int, f, function: str):
     """
 
     # Creation of the training sets
-    list_abscissa = np.linspace(0, 1, N)
+    list_abscissa = np.linspace(0, 0.47, N // 2) + np.linspace(0.53, 1, N // 2)
     data_f = [(x, f(x)) for x in list_abscissa]
 
     # Desorganise the sets
@@ -49,3 +71,6 @@ def create_data(N: int, f, function: str):
     # path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/preprocessing/"
     with open(path + data_file, "wb") as f:
         pkl.dump(dictionnary_f, f)
+
+
+create_data(N, g, "truncated_hat")
