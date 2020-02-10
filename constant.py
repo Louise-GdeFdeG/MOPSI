@@ -9,11 +9,11 @@ NB_EPOCH = [1, 5, 10, 50, 100]
 Learning_rate = [1e-4, 1e-3, 1e-2]"""
 
 # Width of the nn
-W = 7
+W = 100
 # Widths we will use
 WW = [5, 10, 50, 100]
 # Depth of the nn (number of layer)
-L = 7
+L = 10
 # Depths we will use
 LL = [2, 3, 4, 5, 7, 10]
 
@@ -30,7 +30,7 @@ learning_rate = 0.001
 N_ite = 5
 
 # The identification of the function
-id_function = "piecewise3"
+id_function = "piecewise"
 
 # For constant function : id_function = "constant"
 # For piecewise function : id_function = "piecewise" + number (2,4,10)
