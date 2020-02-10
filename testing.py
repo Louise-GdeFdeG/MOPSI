@@ -25,9 +25,9 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
 
     # -----------------------IMPORT TRAINED NETWORK---------------------------#
     # Pour Louise :
-    path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
+    # path = "/Users/lgainon/Desktop/Cours/Ponts/MOPSI/Network/MOPSI/"
     # Pour Vivi :
-    # path = "C:/Users/viniv/OneDrive/Bureau/MOPSI2/"
+    path = "C:/Users/viniv/OneDrive/Bureau/MOPSI2/"
     # Pour Jean :
     # path = "/Users/Jean/Documents/Ponts/MOPSI/MOPSI/"
     network_file = (
@@ -113,7 +113,11 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         + " function and its approximation. W="
         + str(W)
         + "L="
-        + str(L),
+        + str(L)
+        + "Nepoch="
+        +str(NB_EPOCH)
+        + "lr="
+        + str(lr),
         fontsize=16,
     )
     plt.grid()
@@ -132,7 +136,11 @@ def testing(W: int, L: int, N: int, NB_EPOCH: int, lr: float, function: str):
         + " function and the approximationW="
         + str(W)
         + "L="
-        + str(L),
+        + str(L)
+        + "Nepoch="
+        +str(NB_EPOCH)
+        + "lr="
+        + str(lr),
         fontsize=16,
     )
 
